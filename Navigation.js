@@ -25,7 +25,7 @@ function HomeStackGroup() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
        <HomeStack.Screen name="/" component={SplashScreen} />
-        <HomeStack.Screen name="feed" component={Reviewpage} />
+        <HomeStack.Screen name="feed" component={HomePagee} />
        
     </HomeStack.Navigator>
   );

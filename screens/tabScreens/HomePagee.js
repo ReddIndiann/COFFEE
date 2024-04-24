@@ -24,16 +24,16 @@ const HomePagee = ({ navigation }) => {
   const swipableData = [
     { id: "1", text: "Cappuccino", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l1.png") },
     { id: "2", text: "Cappuccino", price: "$10.99",additionalText: "With Foam", image: require("./l2.png") },
-    { id: "3", text: "Item 2", image: require("./l1.png") },
-    { id: "4", text: "Item 3", image: require("./l1.png") },
+    { id: "3", text: "Cappuccino", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l1.png") },
+    { id: "4", text: "Cappuccino", price: "$10.99",additionalText: "With Foam", image: require("./l2.png") },
     // Add more items as needed
   ];
     // Sample data for the swipable list
     const swipableData1 = [
-      { id: "1", text: "Cappuccino0", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l1.png") },
+      { id: "1", text: "Cappuccino", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l3.png") },
       { id: "2", text: "Cappuccino", price: "$10.99",additionalText: "With Foam", image: require("./l2.png") },
-      { id: "3", text: "Item 2", image: require("./l1.png") },
-      { id: "4", text: "Item 3", image: require("./l1.png") },
+      { id: "3", text: "Cappuccino", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l1.png") },
+      { id: "4", text: "Cappuccino", price: "$10.99",additionalText: "With Foam", image: require("./l2.png") },
       // Add more items as needed
     ];
   const renderSwipableItem = ({ item }) => (
