@@ -29,8 +29,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     backgroundColor:"rgba(33, 38, 46, 1)",
    
-    borderBottomWidth: 1,
-    borderBottomColor: "#DDD",
+    borderBottomWidth: 0,
+
    
   },
   title: {

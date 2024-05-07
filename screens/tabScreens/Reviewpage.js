@@ -1,255 +1,277 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, FlatList, TouchableOpacity,ScrollView, TextInput, SafeAreaView, Image } from "react-native";
-import CustomNavbar from "./CustomNavbar";
+import { View, Text, Image, StyleSheet, ImageBackground, SafeAreaView, TouchableOpacity } from "react-native";
 import { LinearGradient } from 'expo-linear-gradient';
+import Icon from "react-native-vector-icons/Ionicons";
+
 const Reviewpage = ({ navigation }) => {
-  const [loading, setLoading] = useState(true);
-  const data = [
-    { id: "1", title: "All" },
-    { id: "2", title: "Cappuccino" },
-    { id: "3", title: "Espresso" },
-    { id: "4", title: "Americano" },
-    { id: "5", title: "Latte" },
-    { id: "6", title: "Flat ...." },
-    // Add more categories as needed
-  ];
+  const [selectedSize, setSelectedSize] = useState(null);
 
-  const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.categoryItem}>
-      <Text style={styles.categoryText}>{item.title}</Text>
-    </TouchableOpacity>
-  );
-
-  // Sample data for the swipable list
-  const swipableData = [
-    { id: "1", text: "Cappuccino", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l1.png") },
-    { id: "2", text: "Cappuccino", price: "$10.99",additionalText: "With Foam", image: require("./l2.png") },
-    { id: "3", text: "Item 2", image: require("./l1.png") },
-    { id: "4", text: "Item 3", image: require("./l1.png") },
-    // Add more items as needed
-  ];
-    // Sample data for the swipable list
-    const swipableData1 = [
-      { id: "1", text: "Cappuccino0", price: "$10.99",additionalText: "With Steamed Milk", image: require("./l1.png") },
-      { id: "2", text: "Cappuccino", price: "$10.99",additionalText: "With Foam", image: require("./l2.png") },
-      { id: "3", text: "Item 2", image: require("./l1.png") },
-      { id: "4", text: "Item 3", image: require("./l1.png") },
-      // Add more items as needed
-    ];
-  const renderSwipableItem = ({ item }) => (
-    <View style={styles.swipableItem}  colors={['#4c669f', '#3b5998', '#192f6a']}>
-      <View style={styles.itemContainer}>
-        <Image source={item.image} style={styles.swipableItemImage} />
-        <Text style={styles.swipableItemText}>{item.text}</Text>
-        <Text style={styles.additionalText}>{item.additionalText}</Text>
-        <View style={styles.priceContainer}>
-         
-          <View style={styles.buyContainer}>
-          <Text style={styles.priceText}>{item.price}</Text>
-            <TouchableOpacity style={styles.priceButton}>
-              <Image source={require("./add.png")} style={styles.buyNowImage} />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-  const renderSwipableItem1 = ({ item }) => (
-    <View style={styles.swipableItem}>
-      <View style={styles.itemContainer}>
-        <Image source={item.image} style={styles.swipableItemImage} />
-        <Text style={styles.swipableItemText}>{item.text}</Text>
-        <Text style={styles.additionalText}>{item.additionalText}</Text>
-        <View style={styles.priceContainer}>
-         
-          <View style={styles.buyContainer}>
-          <Text style={styles.priceText}>{item.price}</Text>
-            <TouchableOpacity style={styles.priceButton}>
-              <Image source={require("./add.png")} style={styles.buyNowImage} />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </View>
-    </View>
-  );
-  
-  
+  const handleSizeSelection = (size) => {
+    setSelectedSize(size);
+  };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-      <View style={styles.headerIcons}>
-        <TouchableOpacity>
-          <Image source={require('./Rectangleleft.png')} style={styles.iconImage} />
-        </TouchableOpacity>
-        <TouchableOpacity>
-          <Image source={require('./Rectangleright.png')} style={styles.iconImage} />
-        </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.backgroundContainer}>
+        <ImageBackground source={require('./l3.png')} style={styles.backgroundImage}>
+          <View style={styles.headerIcons}>
+            <TouchableOpacity>
+              <Image source={require('./back.png')} style={styles.iconImage} />
+            </TouchableOpacity>
+            <TouchableOpacity>
+              <Image source={require('./fav.png')} style={styles.iconImage} />
+            </TouchableOpacity>
+          </View>
+          <View style={styles.contentContainerr}>
+            <View style={styles.sizeContainer}>
+              <View style={styles.sizeButtonRowww}>
+                <View style={styles.name}>
+                  <Text style={styles.nameh}>Robusta Beans</Text>
+                  <Text style={styles.namet}>From Africa</Text>
+                </View>
+                <View style={styles.icontab}>
+                <Icon name="flame" size={20} color="#D17842" />
+
+                  <Text style={styles.icontext}>Bean</Text>
+                </View>
+                <View style={styles.icontab}>
+                  <Icon name="location" size={20} color="#D17842" />
+                  <Text style={styles.icontext}>Africa</Text>
+                </View>
+              </View>
+              <View style={styles.sizeButtonRoww}>
+                <View style={styles.starContainer}>
+                  <Icon name="star" size={30} color="#D17842" />
+                  <Text style={styles.ratingText}>4.5</Text>
+                  <Text style={styles.reviewCount}>(6,879)</Text>
+                </View>
+                <TouchableOpacity style={styles.sizeButtonnn}><Text style={styles.buttonTextt}>Meduim Roasted</Text></TouchableOpacity>
+              </View>
+            </View>
+          </View>
+        </ImageBackground>
       </View>
-      <Text style={styles.head}>Find the Best</Text>
-      <Text style={styles.head}>Coffee For You</Text>
-      <View style={styles.searchContainer}>
-        <Image
-          source={require('./search.png')} // Adjust the path according to your project structure
-          style={styles.searchIcon}
-        />
-        <TextInput
-          style={styles.searchInput}
-          placeholderTextColor="#AAA" 
-          placeholder="Find your Coffee..."
-        />
+      <View style={styles.contentContainer}>
+        <Text style={styles.head}>Description</Text>
+        <Text style={styles.description}>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it </Text>
+        <Text style={styles.head}>Size</Text>
+        <View style={styles.sizeContainer}>
+          <View style={styles.sizeButtonRow}>
+            <TouchableOpacity 
+              style={[
+                styles.sizeButton, 
+                selectedSize === '250gm' && styles.selectedButton
+              ]}
+              onPress={() => handleSizeSelection('250gm')}
+            >
+              <Text style={[styles.buttonText, selectedSize === '250gm' && styles.selectedButtonText]}>250gm</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={[
+                styles.sizeButton, 
+                selectedSize === '500gm' && styles.selectedButton
+              ]}
+              onPress={() => handleSizeSelection('500gm')}
+            >
+              <Text style={[styles.buttonText, selectedSize === '500gm' && styles.selectedButtonText]}>500gm</Text>
+            </TouchableOpacity>
+            <TouchableOpacity 
+              style={[
+                styles.sizeButton, 
+                selectedSize === '1000gm' && styles.selectedButton
+              ]}
+              onPress={() => handleSizeSelection('1000gm')}
+            >
+              <Text style={[styles.buttonText, selectedSize === '1000gm' && styles.selectedButtonText]}>1000gm</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.sizeButtonRoww}>
+            <View style={styles.priceContainer}>
+              <Text style={styles.priceText}>Price</Text>
+             <View style={styles.priceall}><View ><Text style={styles.pricesign} >$</Text>
+            
+             </View>
+             <View><Text style={styles.priceValue}>10.00</Text>
+            
+             </View >
+             </View>
+            </View>
+            <TouchableOpacity style={styles.sizeButtonn}>
+              <Text style={styles.buttonText}>Add to cart</Text></TouchableOpacity>
+          </View>
+        </View>
       </View>
-      <FlatList
-        data={data}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.categoryList}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-      />
-      <FlatList
-        data={swipableData}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.swipableList}
-        renderItem={renderSwipableItem}
-        keyExtractor={(item) => item.id}
-      />
-       <Text style={styles.head1}>Coffee beans</Text>
-      <FlatList
-        data={swipableData1}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={styles.swipableList}
-        renderItem={renderSwipableItem}
-        keyExtractor={(item) => item.id}
-      />
-      </ScrollView>
-      <CustomNavbar
-        onLeftPress={() => {} /* Add your left button logic here */}
-        onRightPress={() => {} /* Add your right button logic here */}
-      />
-    </SafeAreaView>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#141921",
+  },
+  backgroundContainer: {
+    flex: 4,
+    backgroundColor: 'transparent', // Make sure the background is transparent
+  },
+  backgroundImage: {
+    flex: 1,
+    resizeMode: "cover",
+    justifyContent: "center"
+  },
+  contentContainer: {
+    flex: 3, // Adjust this value to make the content container higher
     paddingHorizontal: 20,
-    paddingTop: 20,
-    backgroundColor:"#141921",
+    justifyContent: 'center', // Center content vertically
+  },
+  contentContainerr: {
+   
+    height:190,
+    marginTop:160,
+    paddingHorizontal: 20,
+    justifyContent: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the opacity as needed
   },
   head: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginLeft: 20,
-    color:'#FFFFFF'
+    fontSize: 20,
+    fontWeight: '500',
+    color: '#AEAEAE',
+    marginBottom: 10, // Add some margin between sections
+    marginTop:10
   },
-  head1: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginLeft: 20,
-    marginTop:10,
-    color:'#FFFFFF'
-  },
-  searchContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginTop: 20,
-    marginLeft: 10,
-    borderRadius: 20,
-    borderWidth: 1,
-    backgroundColor:'rgba(33, 38, 46, 1)',
-
-    paddingHorizontal: 10,
-    width: 350,
-  },
-
-  searchIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
-  },
-  searchInput: {
-    flex: 1,
-    height: 40,
-  },
-  categoryList: {
-    marginTop: 20,
-    paddingLeft: 20,
-    
-  },
-  categoryItem: {
-    backgroundColor: "#141921",
-    borderRadius: 30,
-    paddingVertical: 12,
-    paddingHorizontal: 20,
-    marginRight: 10,
-  },
-  categoryText: {
+  description: {
     fontSize: 18,
-    color:'#52555A',
-    fontWeight:"bold"
-   
-  },
-  swipableList: {
-    marginTop: 20,
+    color: '#FFFFFF',
     
-   
+    marginTop: 10, // Add some margin between sections
   },
-  swipableItem: {
-    flexDirection: 'column',
-    marginLeft: 20,
-    width: 150, // Adjust the width of each item as needed
+  sizeContainer: {
+    marginTop: 10, // Add some margin between sections
+  },
+  sizeButtonRow: {
+    flexDirection: 'row', // Make children elements arranged horizontally
+    justifyContent: 'space-between', // Add space between buttons
+    marginBottom:20
+  },
+  sizeButtonRoww: {
+    flexDirection: 'row', // Make children elements arranged horizontally
+    justifyContent: 'space-between', // Add space between buttons
+    marginTop: 10
+  },
+  sizeButton: {
+    backgroundColor: '#141921',
+    borderWidth: 1,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    borderRadius: 5,
+  },
+  sizeButtonnn: {
+    backgroundColor: '#141921',
+    borderWidth: 1,
+    paddingVertical: 20,
+    paddingHorizontal: 30,
+    borderRadius: 10,
+  },
+  selectedButton: {
+    borderColor:'#D17842',
+  },
+  buttonText: {
+    fontSize: 18,
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+  buttonTextt: {
+    fontSize: 18,
+    color: '#AEAEAE',
+    fontWeight: '',
+  },
+  selectedButtonText: {
+    color: '#D17842',
+  },
+  sizeButtonn: {
+    backgroundColor: '#D17842',
+    paddingVertical: 20,
+    paddingHorizontal: 40,
+    borderRadius: 20,
+  },
+  priceContainer: {
     alignItems: 'center',
-    backgroundColor:"rgba(37, 42, 50, 1)",
-    padding:10,
-    borderRadius:10,
+    
   },
-  swipableItemImage: {
-    width: 130,
-    height: 130,
-    borderRadius: 10, // Adjust the border radius of the image
-  },
-  swipableItemText: {
-    marginTop: 10,
-    marginBottom: 5,
-    fontSize:25,
-    color:'#FFFFFF'
-  },
-  additionalText:{
-    color:'#FFFFFF'
-  },
-  buyContainer: {
-    flexDirection: 'row', // Align the price and buy image in the same row
-    alignItems: 'center', 
-    marginTop:10// Align items vertically in the center
-  },
-  priceButton: {
-    marginRight: 5,
-    marginLeft: 40
-
-  },
+  priceall:{
+    flexDirection: 'row',
+  }
+  ,
   priceText: {
-   fontSize:30,
-   color:'#FFFFFF'
-
+    fontSize: 18,
+    color: '#AEAEAE',
+    fontWeight: '',
   },
-  buyNowImage: {
-    width: 30, // Adjust the width of the image
-    height: 30, // Adjust the height of the image
+  priceValue: {
+    fontSize: 25,
+    color: '#FFFFFF',
+  },
+  pricesign: {
+    fontSize: 25,
+    color: '#D17842',
   },
   headerIcons: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingHorizontal: 20,
-    marginBottom: 10,
+    marginTop: 60, 
+    marginBottom: 30, // Add marginTop to move the icons to the top
   },
   iconImage: {
-    width: 30,
-    height: 30,
+    width: 40,
+    height: 40,
+  },
+  nameh: {
+   fontSize:25,
+   color:'white'
+  },
+  namet: {
+    fontSize:16,
+    color:'white'
+   },
+  name: {
+  marginRight:35
+   },
+  sizeButtonRowww: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginTop: 30,
+  },
+  icontab: {
+    backgroundColor: 'black',
+    height: 60,
+    width: 70,
+  
+    alignContent: 'center',
+    justifyContent: 'center',
+    alignItems: 'center', // Center text horizontally
+    borderRadius:10
+  },
+  icontext: {
+    color: 'white',
+    textAlign: 'center', // Center text horizontally
+  },
+  starContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  ratingText: {
+    color: '#FFFFFF',
+    marginLeft: 5,
+    fontSize:25,
+    fontWeight:'bold'
+
+  },
+  reviewCount: {
+    color: '#FFFFFF',
+    marginLeft: 5,
   },
 });
 
 export default Reviewpage;
+ 

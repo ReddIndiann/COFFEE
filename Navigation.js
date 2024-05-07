@@ -19,12 +19,13 @@ import Payments from "./screens/drawerScreens/Payments";
 import SplashScreen from "./screens/tabScreens/SplashScreen";
 import HomePagee from "./screens/tabScreens/HomePagee";
 import Reviewpage from "./screens/tabScreens/Reviewpage";
+import Cart from "./screens/tabScreens/Cart";
 const HomeStack = createNativeStackNavigator();
 
 function HomeStackGroup() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-       <HomeStack.Screen name="/" component={SplashScreen} />
+       <HomeStack.Screen name="/" component={Cart} />
         <HomeStack.Screen name="feed" component={HomePagee} />
        
     </HomeStack.Navigator>
